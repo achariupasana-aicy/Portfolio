@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S. Upasana Achary — CSE Student &amp; Full-Stack / Security Developer</title>
+<meta name="description" content="Portfolio of S. Upasana Achary — B.Tech CSE student at NIST University specializing in full-stack development and cybersecurity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0F1A;
+    --bg-alt:#0F1526;
+    --surface:#141B30;
+    --surface-2:#1B2440;
+    --line:#2A3455;
+    --text:#E9ECF6;
+    --muted:#8B93B4;
+    --mint:#33E0B0;
+    --mint-dim:#1E8F70;
+    --gold:#F0AE3C;
+    --danger:#F2637A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--mint);color:#04120E;}
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  section{padding:110px 0;position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--mint);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--mint);}
+  .section-title{font-size:clamp(28px,4vw,40px);margin-bottom:14px;}
+  .section-sub{color:var(--muted);max-width:560px;font-size:15.5px;margin-bottom:56px;}
+
+  /* NAV */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(11,15,26,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:1120px;margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--text);display:flex;align-items:center;gap:8px;}
+  .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 8px var(--mint);}
+  .navlinks{display:flex;gap:30px;font-size:13.5px;color:var(--muted);}
+  .navlinks a{transition:color .2s;}
+  .navlinks a:hover{color:var(--mint);}
+  .navcta{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    border:1px solid var(--mint-dim);color:var(--mint);
+    padding:8px 16px;border-radius:6px;transition:all .2s;
+  }
+  .navcta:hover{background:var(--mint);color:#04120E;}
+  .navtoggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding-top:100px;
+    background:
+      radial-gradient(ellipse 900px 500px at 80% -10%, rgba(51,224,176,0.10), transparent),
+      radial-gradient(ellipse 700px 500px at 0% 100%, rgba(240,174,60,0.06), transparent);
+    position:relative;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:42px 42px;
+    mask-image:linear-gradient(to bottom, black, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:60px;align-items:center;
+    position:relative;z-index:1;
+  }
+  .hero-tag{
+    font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mint);
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--mint-dim);padding:6px 14px;border-radius:100px;
+    margin-bottom:26px;
+  }
+  .hero-tag .blip{width:6px;height:6px;border-radius:50%;background:var(--mint);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.25;}}
+  .hero h1{
+    font-size:clamp(36px,5.4vw,58px);
+    line-height:1.08;
+    margin-bottom:22px;
+  }
+  .hero h1 .accent{color:var(--mint);}
+  .hero p.lead{
+    color:var(--muted);font-size:16.5px;max-width:520px;margin-bottom:34px;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px;}
+  .btn{
+    font-family:'JetBrains Mono',monospace;font-size:13.5px;
+    padding:13px 24px;border-radius:7px;display:inline-flex;align-items:center;gap:8px;
+    transition:all .2s;
+  }
+  .btn-primary{background:var(--mint);color:#04120E;font-weight:600;}
+  .btn-primary:hover{background:#4FF0C6;transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--mint-dim);color:var(--mint);}
+  .hero-stack{display:flex;gap:26px;flex-wrap:wrap;color:var(--muted);font-size:13px;font-family:'JetBrains Mono',monospace;}
+  .hero-stack span{color:var(--text);}
+
+  /* ID CARD (signature element) */
+  .idcard{
+    background:linear-gradient(165deg,var(--surface-2),var(--surface));
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:26px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .idcard::after{
+    content:"";position:absolute;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--mint),transparent);
+    top:0; animation:scan 3.2s linear infinite;
+    box-shadow:0 0 12px var(--mint);
+  }
+  @keyframes scan{0%{top:0;}100%{top:100%;}}
+  .idcard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;}
+  .idcard-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;}
+  .idcard-status{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mint);display:flex;align-items:center;gap:6px;}
+  .idcard-status .blip{width:6px;height:6px;border-radius:50%;background:var(--mint);}
+  .idcard-avatar{
+    width:64px;height:64px;border-radius:12px;
+    background:linear-gradient(135deg,var(--mint),var(--gold));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#04120E;
+    margin-bottom:16px;
+  }
+  .idcard h3{font-size:20px;margin-bottom:4px;}
+  .idcard .role{color:var(--muted);font-size:13px;margin-bottom:20px;}
+  .idcard-rows{border-top:1px dashed var(--line);padding-top:16px;display:flex;flex-direction:column;gap:11px;}
+  .idcard-row{display:flex;justify-content:space-between;font-size:12.5px;}
+  .idcard-row .k{color:var(--muted);font-family:'JetBrains Mono',monospace;}
+  .idcard-row .v{font-family:'JetBrains Mono',monospace;color:var(--text);}
+  .idcard-row .v.mint{color:var(--mint);}
+
+  /* MARQUEE */
+  .marquee-wrap{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--bg-alt);}
+  .marquee{display:flex;gap:60px;padding:18px 0;white-space:nowrap;animation:scroll 26s linear infinite;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);}
+  .marquee span{display:flex;align-items:center;gap:10px;}
+  .marquee span::before{content:"//";color:var(--mint);}
+  @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  /* ABOUT / STATS */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .about-grid p{color:var(--muted);margin-bottom:16px;font-size:15.5px;}
+  .about-grid strong{color:var(--text);}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .stat-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;
+    transition:border-color .2s;
+  }
+  .stat-card:hover{border-color:var(--mint-dim);}
+  .stat-card .num{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:700;color:var(--mint);}
+  .stat-card .lbl{font-size:12.5px;color:var(--muted);margin-top:4px;}
+
+  /* SKILLS */
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .skill-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;
+  }
+  .skill-card h4{font-size:15px;margin-bottom:14px;color:var(--gold);}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);
+    border:1px solid var(--line);padding:5px 10px;border-radius:5px;
+  }
+
+  /* TIMELINE (experience) */
+  .timeline{border-left:1px solid var(--line);margin-left:6px;}
+  .tl-item{position:relative;padding:0 0 40px 34px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";position:absolute;left:-6px;top:4px;width:11px;height:11px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--mint);
+  }
+  .tl-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+  .tl-head h4{font-size:16.5px;}
+  .tl-head .org{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mint);}
+  .tl-item p{color:var(--muted);font-size:14.5px;margin-bottom:10px;max-width:600px;}
+
+  /* PROJECTS */
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .proj-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;
+    display:flex;flex-direction:column;gap:14px;transition:all .25s;position:relative;
+  }
+  .proj-card:hover{transform:translateY(-4px);border-color:var(--mint-dim);box-shadow:0 20px 40px -20px rgba(51,224,176,0.15);}
+  .proj-idx{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);}
+  .proj-card h4{font-size:17px;}
+  .proj-card p{color:var(--muted);font-size:13.5px;flex-grow:1;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:6px;}
+
+  /* CERTS */
+  .cert-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .cert-item{
+    background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .cert-item .badge{
+    width:34px;height:34px;flex-shrink:0;border-radius:8px;background:var(--surface-2);
+    display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;
+  }
+  .cert-item h5{font-size:14.5px;margin-bottom:3px;}
+  .cert-item span{color:var(--muted);font-size:12.5px;}
+
+  /* CONTACT */
+  .contact-box{
+    background:linear-gradient(160deg,var(--surface-2),var(--surface));
+    border:1px solid var(--line);border-radius:20px;padding:56px;
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .contact-box h2{font-size:clamp(26px,4vw,38px);margin-bottom:14px;}
+  .contact-box p{color:var(--muted);max-width:480px;margin:0 auto 32px;}
+  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .clink{
+    display:flex;align-items:center;gap:9px;
+    background:var(--surface);border:1px solid var(--line);border-radius:9px;
+    padding:12px 20px;font-family:'JetBrains Mono',monospace;font-size:13px;
+    transition:all .2s;
+  }
+  .clink:hover{border-color:var(--mint);color:var(--mint);transform:translateY(-2px);}
+
+  footer{padding:34px 0;text-align:center;color:var(--muted);font-size:12.5px;font-family:'JetBrains Mono',monospace;border-top:1px solid var(--line);}
+  footer a:hover{color:var(--mint);}
+
+  @media(max-width:860px){
+    .navlinks{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;gap:40px;}
+    .skill-grid{grid-template-columns:1fr 1fr;}
+    .proj-grid{grid-template-columns:1fr 1fr;}
+    .cert-list{grid-template-columns:1fr;}
+  }
+  @media(max-width:560px){
+    section{padding:70px 0;}
+    .skill-grid{grid-template-columns:1fr;}
+    .proj-grid{grid-template-columns:1fr;}
+    .contact-box{padding:32px 20px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#top"><span class="dot"></span>upasana.achary</a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certs">Certifications</a>
+    </div>
+    <a class="navcta" href="#contact">Get in touch</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-tag"><span class="blip"></span>OPEN TO INTERNSHIPS &amp; FULL-STACK / SECURITY ROLES</div>
+        <h1>Building software that works — and thinking about how it <span class="accent">breaks</span>.</h1>
+        <p class="lead">I'm Upasana, a third-year Computer Science &amp; Engineering student at NIST University. I build full-stack applications with Java and Spring Boot, and I study the security side of the systems I build — from packet analysis to phishing defense.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View my projects →</a>
+          <a class="btn btn-ghost" href="mailto:upasanaachary19@gmail.com">Say hello</a>
+        </div>
+        <div class="hero-stack">
+          <div>SGPA <span>9.55</span> (Sem 4)</div>
+          <div>Internships <span>4</span></div>
+          <div>Projects <span>5</span></div>
+          <div>Grad <span>2028</span></div>
+        </div>
+      </div>
+
+      <div class="idcard">
+        <div class="idcard-top">
+          <div class="idcard-label">Access Badge</div>
+          <div class="idcard-status"><span class="blip"></span>Active</div>
+        </div>
+        <div class="idcard-avatar">SA</div>
+        <h3>S. Upasana Achary</h3>
+        <div class="role">B.Tech CSE · NIST University</div>
+        <div class="idcard-rows">
+          <div class="idcard-row"><span class="k">Year</span><span class="v">3rd Year (2024–2028)</span></div>
+          <div class="idcard-row"><span class="k">CGPA</span><span class="v mint">9.23 avg (Yr 2)</span></div>
+          <div class="idcard-row"><span class="k">Location</span><span class="v">Brahmapur, Odisha, IN</span></div>
+          <div class="idcard-row"><span class="k">Focus</span><span class="v">Full-Stack · Security</span></div>
+          <div class="idcard-row"><span class="k">Status</span><span class="v mint">Meritorious Student</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span>Java</span><span>Spring Boot</span><span>React</span><span>MySQL</span><span>Python</span>
+      <span>Scapy</span><span>Cybersecurity</span><span>C++</span><span>Azure Security</span><span>DSA</span>
+      <span>Java</span><span>Spring Boot</span><span>React</span><span>MySQL</span><span>Python</span>
+      <span>Scapy</span><span>Cybersecurity</span><span>C++</span><span>Azure Security</span><span>DSA</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow">01 · About</div>
+      <h2 class="section-title">Curiosity about how systems work — and fail.</h2>
+      <div class="about-grid">
+        <div>
+          <p>My interest in computer science started with a simple question: how does technology actually solve real problems? At <strong>NIST University</strong>, that curiosity turned into a focused track across full-stack development and cybersecurity — backed by a <strong>9.55 SGPA</strong> in my fourth semester and a <strong>9.23 average CGPA</strong> in my second year.</p>
+          <p>Across <strong>four internships</strong> — Java Full-Stack Development, Cybersecurity, and two rounds of C++ Development at Cisco and NIST — I've built REST APIs with Spring Boot, integrated MySQL with JDBC and Hibernate/JPA, written a Python packet sniffer, and designed a phishing-awareness training module.</p>
+          <p>Outside coursework, I'm a <strong>Data Science Club</strong> member and hackathon participant, and I hold Microsoft Learn certifications in cybersecurity and Azure Security.</p>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="num">9.55</div><div class="lbl">SGPA · Semester 4</div></div>
+          <div class="stat-card"><div class="num">92.88%</div><div class="lbl">Class X · Gold Medalist</div></div>
+          <div class="stat-card"><div class="num">04</div><div class="lbl">Internships completed</div></div>
+          <div class="stat-card"><div class="num">05</div><div class="lbl">Independent projects</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="eyebrow">02 · Toolbox</div>
+      <h2 class="section-title">Skills &amp; Tools</h2>
+      <p class="section-sub">What I actually build with, grouped by how I use it.</p>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <h4>Programming</h4>
+          <div class="skill-tags"><span class="tag">C</span><span class="tag">C++</span><span class="tag">Java</span><span class="tag">Python</span><span class="tag">SQL</span></div>
+        </div>
+        <div class="skill-card">
+          <h4>Full-Stack &amp; Backend</h4>
+          <div class="skill-tags"><span class="tag">Spring Boot</span><span class="tag">REST APIs</span><span class="tag">JDBC</span><span class="tag">Hibernate/JPA</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Maven</span><span class="tag">Tomcat</span></div>
+        </div>
+        <div class="skill-card">
+          <h4>Databases &amp; Core CS</h4>
+          <div class="skill-tags"><span class="tag">MySQL</span><span class="tag">DBMS</span><span class="tag">DSA</span><span class="tag">OOP</span><span class="tag">Operating Systems</span><span class="tag">Networks</span></div>
+        </div>
+        <div class="skill-card">
+          <h4>Cybersecurity &amp; Cloud</h4>
+          <div class="skill-tags"><span class="tag">Network Security</span><span class="tag">Packet Analysis</span><span class="tag">TCP/IP</span><span class="tag">Cryptography</span><span class="tag">Azure Security</span><span class="tag">Sentinel</span><span class="tag">Defender XDR</span></div>
+        </div>
+        <div class="skill-card">
+          <h4>Data &amp; AI/ML</h4>
+          <div class="skill-tags"><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Data Analytics</span><span class="tag">ML Fundamentals</span></div>
+        </div>
+        <div class="skill-card">
+          <h4>Tools</h4>
+          <div class="skill-tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Eclipse</span><span class="tag">Jupyter</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="eyebrow">03 · Experience</div>
+      <h2 class="section-title">Internships</h2>
+      <p class="section-sub">Four internships spanning full-stack development, cybersecurity, and core C++ engineering.</p>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-head"><h4>Java Full Stack Development Internship</h4><span class="org">NIST University</span></div>
+          <p>Built backend functionality and REST APIs with Java and Spring Boot; integrated MySQL via JDBC and Hibernate/JPA.</p>
+          <div class="skill-tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">MySQL</span><span class="tag">Maven</span><span class="tag">Tomcat</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-head"><h4>Cybersecurity Internship</h4><span class="org">CodeAlpha</span></div>
+          <p>Built a Python/Scapy network packet sniffer and a phishing-awareness training module with scenario-based quizzes.</p>
+          <div class="skill-tags"><span class="tag">Python</span><span class="tag">Scapy</span><span class="tag">TCP/IP</span><span class="tag">Cybersecurity</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-head"><h4>C++ Development Internship</h4><span class="org">Cisco</span></div>
+          <p>Applied object-oriented and structured programming to practical debugging and problem-solving tasks.</p>
+          <div class="skill-tags"><span class="tag">C++</span><span class="tag">OOP</span><span class="tag">Debugging</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-head"><h4>C++ Development Internship</h4><span class="org">NIST University</span></div>
+          <p>Worked with classes, control structures, arrays, and pointers; practiced systematic debugging.</p>
+          <div class="skill-tags"><span class="tag">C++</span><span class="tag">Arrays &amp; Pointers</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-head"><h4>Summer Internship — C++ &amp; Cisco Networking</h4><span class="org">Cisco Networking Academy</span></div>
+          <p>Reinforced programming fundamentals and completed Cisco networking training.</p>
+          <div class="skill-tags"><span class="tag">C++</span><span class="tag">Networking</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" style="background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="eyebrow">04 · Portfolio</div>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">Full-stack platforms and cybersecurity tools I've designed and built.</p>
+      <div class="proj-grid">
+        <div class="proj-card">
+          <div class="proj-idx">01</div>
+          <h4>Skana — Skill Analyzer</h4>
+          <p>Full-stack platform for analyzing and managing student skills, built end to end with a Spring Boot API and a React front end.</p>
+          <div class="proj-tags"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">React</span><span class="tag">MySQL</span></div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-idx">02</div>
+          <h4>Network Sniffer</h4>
+          <p>Educational packet-analysis tool that captures live traffic and identifies protocols using Scapy.</p>
+          <div class="proj-tags"><span class="tag">Python</span><span class="tag">Scapy</span><span class="tag">Networking</span></div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-idx">03</div>
+          <h4>Phishing Awareness &amp; Detection</h4>
+          <p>Interactive awareness module with real-world phishing scenarios, built to train non-technical users.</p>
+          <div class="proj-tags"><span class="tag">Cybersecurity</span><span class="tag">User Education</span></div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-idx">04</div>
+          <h4>Sudoku Solver</h4>
+          <p>Recursive solver using backtracking and the Minimum Remaining Values heuristic for faster convergence.</p>
+          <div class="proj-tags"><span class="tag">C</span><span class="tag">Backtracking</span><span class="tag">MRV</span></div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-idx">05</div>
+          <h4>Java Swing Calculator</h4>
+          <p>Desktop calculator built with an event-driven, object-oriented GUI in Java Swing.</p>
+          <div class="proj-tags"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">Swing</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <div class="wrap">
+      <div class="eyebrow">05 · Milestones</div>
+      <h2 class="section-title">Certifications &amp; Achievements</h2>
+      <p class="section-sub">Certifications, honors, and recognition earned along the way.</p>
+      <div class="cert-list">
+        <div class="cert-item"><div class="badge">M</div><div><h5>Microsoft Learn — Cybersecurity &amp; Azure Security</h5><span>Security &amp; Azure Security modules</span></div></div>
+        <div class="cert-item"><div class="badge">C</div><div><h5>Cisco Networking Basics</h5><span>Cisco Networking Academy</span></div></div>
+        <div class="cert-item"><div class="badge">H</div><div><h5>HP Data Analytics Certification</h5><span>HP</span></div></div>
+        <div class="cert-item"><div class="badge">O</div><div><h5>Object-Oriented Programming Using C++</h5><span>NIST University</span></div></div>
+        <div class="cert-item"><div class="badge">★</div><div><h5>Gold Medalist, Class X</h5><span>92.88% · 2021</span></div></div>
+        <div class="cert-item"><div class="badge">$</div><div><h5>Central Government Scholarship Recipient</h5><span>Merit-based award</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <div class="eyebrow" style="justify-content:center;">06 · Contact</div>
+        <h2>Let's build something together.</h2>
+        <p>Open to Software Development, Full-Stack, AI/ML, and Cybersecurity internships and opportunities. Reach out — I reply fast.</p>
+        <div class="contact-links">
+          <a class="clink" href="mailto:upasanaachary19@gmail.com">✉ upasanaachary19@gmail.com</a>
+          <a class="clink" href="tel:+917846868838">📞 +91 78468 68838</a>
+          <a class="clink" href="https://github.com/achariupasana-aicy" target="_blank" rel="noopener">⌥ GitHub</a>
+          <a class="clink" href="https://linkedin.com/in/upasana-achary-90275a38a" target="_blank" rel="noopener">in LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 S. Upasana Achary · Brahmapur, Odisha, India · Built with care.
+</footer>
+
+</body>
+</html>
